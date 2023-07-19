@@ -28,7 +28,7 @@ const AboutMe: React.FC<AboutMeProps> = ({
 				text={title}
 				className={headClass}
 			/>
-			<div className="mt-8">
+			<div className="my-4">
 				<DetailsColumn color={color} sideHeading="DOB " content={data?.dob} />
 				<DetailsColumn color={color} sideHeading="AGE " content={data?.age} />
 				<DetailsColumn

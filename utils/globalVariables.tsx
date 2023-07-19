@@ -49,6 +49,9 @@ export const languageObject = {
 
 export const Skills = [
 	"React",
+	"NextJS",
+	"StoryBook",
+	"Webpack",
 	"Angular",
 	"Vue",
 	"Swelt",

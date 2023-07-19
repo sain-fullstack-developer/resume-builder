@@ -26,7 +26,7 @@ function AboutPage() {
 					Welcome to our Resume Builder Application, built with React!
 				</h1>
 				<p className="text-xl leading-tight mb-10">
-					Sainath Kommagoni's Resume Builder Application is a powerful and
+					Sainath Kommagoni&apos;s Resume Builder Application is a powerful and
 					user-friendly tool that allows users to quickly and easily create
 					professional-quality resumes. The application is built using the React
 					framework and offers a range of customizable templates to choose from,
@@ -44,15 +44,15 @@ function AboutPage() {
 				</p>
 				<p className="text-xl leading-tight mb-10">
 					One of the key features of the application is its ability to generate
-					a downloadable PDF of the user's resume, making it easy to share with
-					potential employers or clients. This feature ensures that users have a
-					high-quality, professional-looking resume in a format that is widely
-					accepted and easy to use.
+					a downloadable PDF of the user&apos;s resume, making it easy to share
+					with potential employers or clients. This feature ensures that users
+					have a high-quality, professional-looking resume in a format that is
+					widely accepted and easy to use.
 				</p>
 				<p className="text-xl leading-tight mb-10">
-					Whether you're a recent graduate, a seasoned professional, or anywhere
-					in between, the Resume Builder Application is a valuable tool for
-					anyone looking to create a standout resume. With its customizable
+					Whether you&apos;re a recent graduate, a seasoned professional, or
+					anywhere in between, the Resume Builder Application is a valuable tool
+					for anyone looking to create a standout resume. With its customizable
 					templates, user-friendly interface, and powerful features, this
 					application streamlines the process of creating a polished and
 					professional resume, helping users to stand out from the crowd and

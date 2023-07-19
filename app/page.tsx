@@ -3,7 +3,6 @@ import CourseCard from "@/components/CourseCard";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import ToggleMode from "@/components/ToggleMode";
-import { staticImagesPath } from "@/utils/utilFunctions";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -48,14 +47,14 @@ export default function Home() {
 					<section className="my-6">
 						<div className="grid  px-4 mx-auto max-w-screen-xl lg:gap-8 xl:gap-0 lg:grid-cols-12">
 							<div className="place-self-center mr-auto lg:col-span-7">
-								<h1 className="mb-4 max-w-2xl text-4xl font-black tracking-widest leading-10 md:text-5xl xl:text-6xl dark:text-white">
+								<h1 className="mb-4 max-w-2xl text-4xl font-black tracking-widest md:text-5xl xl:text-6xl dark:text-white">
 									Create Your Professional Resume Effortlessly in Minutes
 								</h1>
 								<p className="mb-6 max-w-2xl font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
 									Select a template to create your professional resume
 								</p>
 								<Link
-									href="/templates"
+									href="/template"
 									className="inline-flex justify-center items-center py-3 px-5 mr-3 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900">
 									Get started
 									<svg
@@ -71,7 +70,7 @@ export default function Home() {
 								</Link>
 							</div>
 							<div className="hidden lg:mt-0 lg:col-span-5 lg:flex">
-								<img src="character.png" alt="mockup" />
+								<img src="/character.png" alt="mockup" />
 							</div>
 						</div>
 					</section>

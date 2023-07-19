@@ -33,11 +33,11 @@ function Header({ onDarkMode }: HeaderProps) {
 						</span>
 					</Link>
 					<div className="flex items-center gap-4 uppercase font-semibold tracking-widest lg:order-2">
-						<Link
+						{/* <Link
 							href="/login"
 							className="bg-transperentBlack hover:bg-transperentPrimary hover:text-black text-white rounded-full px-6 py-3">
 							Log in
-						</Link>
+						</Link> */}
 						<Link
 							href="/template"
 							className="bg-transperentBlack hover:bg-transperentPrimary hover:text-black text-white rounded-full px-6 py-3">

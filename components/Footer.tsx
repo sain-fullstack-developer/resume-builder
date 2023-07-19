@@ -44,7 +44,9 @@ const Footer = ({ onDarkMode }: FooterProps) => {
 							</h2>
 							<ul className="text-gray-600 dark:text-gray-400">
 								<li className="mb-4">
-									<Link href="https://github.com" className="hover:underline ">
+									<Link
+										href="https://github.com/sain-fullstack-developer"
+										className="hover:underline ">
 										Github
 									</Link>
 								</li>
@@ -79,7 +81,7 @@ const Footer = ({ onDarkMode }: FooterProps) => {
 					<span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
 						© 2023{" "}
 						<Link href="/" className="hover:underline">
-							FreeResume™
+							FreeResume@sainath™
 						</Link>
 						All Rights Reserved.
 					</span>

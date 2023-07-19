@@ -19,10 +19,10 @@ const DetailsColumn: React.FC<DetailsColumnProps> = ({
 	return (
 		<div
 			style={{ color: color }}
-			className={`grid grid-cols-compDetails gap-3 mb-3 ${ClassContainer}`}>
-			<p>{sideHeading} : </p>
+			className={`grid grid-cols-2 mb-6 ${ClassContainer}`}>
+			<p className="pr-4  font-semibold">{sideHeading} : </p>
 			{contentBold ? (
-				<p className="font-medium tracking-widest">
+				<p className="font-medium tracking-widest text-gray-600">
 					<b>{content}</b>
 				</p>
 			) : (

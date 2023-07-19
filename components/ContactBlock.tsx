@@ -1,7 +1,6 @@
 import React from "react";
 import TextIcon from "../elements/TextIcon";
 import { apiDataTypes } from "../utils/typeInterfaces";
-import { staticImagesPath } from "../utils/utilFunctions";
 
 interface ContactBlockProps {
 	data: apiDataTypes;
@@ -11,27 +10,19 @@ interface ContactBlockProps {
 const ContactBlock: React.FC<ContactBlockProps> = ({ data, color }) => {
 	const Contactlist = [
 		{
-			icon: color
-				? staticImagesPath("phone-call.png")
-				: staticImagesPath("phone-call-b.png"),
+			icon: color ? "/phone-call.png" : "/phone-call-b.png",
 			contact: data?.phone,
 		},
 		{
-			icon: color
-				? staticImagesPath("mail.png")
-				: staticImagesPath("email-b.png"),
+			icon: color ? "/mail.png" : "/email-b.png",
 			contact: data?.mail,
 		},
 		{
-			icon: color
-				? staticImagesPath("location.png")
-				: staticImagesPath("location-b.png"),
+			icon: color ? "/location.png" : "/location-b.png",
 			contact: data?.location,
 		},
 		{
-			icon: color
-				? staticImagesPath("location.png")
-				: staticImagesPath("location-b.png"),
+			icon: color ? "/location.png" : "/location-b.png",
 			contact: data?.location,
 		},
 	];

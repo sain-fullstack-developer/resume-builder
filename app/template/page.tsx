@@ -35,7 +35,11 @@ const SelectTemplate = () => {
 						<Link
 							className="w-full h-full p-6 bg-transperentPrimary shadow-xl rounded-2xl"
 							key={index}
-							href={`/form/${index}`}>
+							href={
+								index === 0 || index === 1
+									? `/form/${index}`
+									: `/page-not-found`
+							}>
 							<img
 								className="w-full h-full hover:scale-105 transition-all rounded-xl shadow-2xl"
 								src={list}

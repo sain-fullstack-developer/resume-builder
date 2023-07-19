@@ -59,7 +59,7 @@ function Template3({ resumeRef, fillModeData }: TemplatesProps) {
 		<>
 			<div ref={resumeRef} className="bg-gray-400 grid grid-cols-temp3One">
 				<div className="grid grid-cols-temp3Two p-10 relative place-items-center z-0">
-					<Image
+					<img
 						src={imageUrl ? imageUrl : "avatar.png"}
 						alt="profile-pic"
 						className="h-40 w-40 rounded-full z-10"

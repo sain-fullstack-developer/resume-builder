@@ -1,6 +1,7 @@
 import React from "react";
 import { useDropzone } from "react-dropzone";
 import { staticImagesPath } from "../utils/utilFunctions";
+import Image from "next/image";
 
 interface MyDropzoneProps {
 	onDrop: (acceptedFiles: any[]) => Promise<void>;

@@ -11,7 +11,7 @@ const Heading = ({ level, text, className, underline }: HeadingProps) => {
 	if (level === 2) {
 		className =
 			className &&
-			`text-primaryTemp font-bold mt-10 mb-5 relative w-max uppercase ${
+			`font-bold mt-10 mb-4 relative w-max uppercase text-xl ${
 				underline
 					? "before:content before:block before:absolute before:rounded-lg before:-bottom-1 before:h-[2px] before:w-full before:bg-secondaryTemp"
 					: ""

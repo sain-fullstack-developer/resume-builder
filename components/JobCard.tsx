@@ -1,5 +1,6 @@
 import React from "react";
 import { formatDate, staticImagesPath } from "../utils/utilFunctions";
+import Image from "next/image";
 
 interface JobCardProps {
 	title: string;
@@ -44,7 +45,7 @@ const JobCard: React.FC<JobCardProps> = ({
 					className={`w-4 h-4 cursor-pointer animate-pulse ${
 						isShow ? "rotate-180" : "rotate-0"
 					}`}
-					src={staticImagesPath("down-arrow.png")}
+					src="down-arrow.png"
 					alt="down-arrow"
 				/>
 			</div>

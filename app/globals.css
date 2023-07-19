@@ -28,6 +28,18 @@ li {
 	font-size: 20px;
 }
 
+::-webkit-scrollbar {
+	display: none;
+}
+
+.cv-scroll-bar {
+	overflow: hidden;
+}
+
+.display {
+	display: none;
+}
+
 :root {
 	--primary: rgba(0, 51, 20, 0.8);
 	--primary-full: rgb(0, 51, 20);
@@ -50,12 +62,4 @@ li {
 	--r4-alternate: ;
 	--white: #ffffff;
 	--black: #000000;
-}
-
-::-webkit-scrollbar {
-	display: none;
-}
-
-.cv-scroll-bar {
-	overflow: hidden;
 }

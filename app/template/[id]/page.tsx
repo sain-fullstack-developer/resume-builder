@@ -42,7 +42,7 @@ function TemplatePage({ fillMode, fillDetails, imageSrc }: TemplatePageProps) {
 		setIsEditing(true);
 	}
 
-	async function handleSubmit(formData: any) {
+	async function handleSubmit(formData: apiDataTypes) {
 		try {
 			dispatch(updateFormData(formData) as any);
 		} catch (error) {
@@ -73,14 +73,14 @@ function TemplatePage({ fillMode, fillDetails, imageSrc }: TemplatePageProps) {
 						fillModeData={fillDetails}
 					/>
 				);
-			case 2:
-				return (
-					<Template2
-						fillImage={imageSrc ? imageSrc : ""}
-						resumeRef={resumeRef}
-						fillModeData={fillDetails}
-					/>
-				);
+				// case 2:
+				// 	return (
+				// 		<Template2
+				// 			fillImage={imageSrc ? imageSrc : ""}
+				// 			resumeRef={resumeRef}
+				// 			fillModeData={fillDetails}
+				// 		/>
+				// 	);
 				// case "3":
 				"";
 				// return <Template3 resumeRef={resumeRef} fillModeData={fillDetails} />;
@@ -99,7 +99,7 @@ function TemplatePage({ fillMode, fillDetails, imageSrc }: TemplatePageProps) {
 	};
 
 	return (
-		<div className="min-h-screen">
+		<div className="">
 			{isEditing ? (
 				<FillResumeData
 					submitForm={handleSubmit}
@@ -111,7 +111,7 @@ function TemplatePage({ fillMode, fillDetails, imageSrc }: TemplatePageProps) {
 					}
 				/>
 			) : (
-				<div className="relative z-0">
+				<div className="relative z-0 min-h-screen">
 					<div className="max-w-[100px] w-full absolute top-2.5 right-5 z-50">
 						{!fillMode && (
 							<Link href={`/form/${templateId}`}>

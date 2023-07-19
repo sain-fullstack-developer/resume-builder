@@ -47,7 +47,7 @@ import React, {
 import { useDispatch, useSelector } from "react-redux";
 
 export interface FillResumeDataProps {
-	submitForm?: (values: any) => void;
+	submitForm?: (formState: apiDataTypes | string) => void;
 	onFormSubmitted?: () => void;
 	initialValues?: apiDataTypes;
 }
@@ -86,12 +86,15 @@ function FillResumeData({
 
 	const templateId = parseInt(pathname.split("/")[2]);
 
-	const handleFieldUpdate = (
-		field: keyof FormState["fields"],
-		value: string | FileData | any[] | object | number
-	) => {
-		dispatch(updateField({ field, value }));
-	};
+	const handleFieldUpdate = useCallback(
+		(
+			field: keyof FormState["fields"],
+			value: string | FileData | any[] | object | number
+		) => {
+			dispatch(updateField({ field, value }));
+		},
+		[dispatch]
+	);
 
 	const handleAddItem = (field: keyof FormState["fields"], item: string) => {
 		dispatch(addItem({ field, item }));
@@ -169,81 +172,84 @@ function FillResumeData({
 			uploadedCV: showCV ? showCV : "",
 			dropzonePlaceholder:
 				resumeFilename === "" ? "Upload CV/Resume" : resumeFilename,
-			onDrop: useCallback(async (acceptedFiles: any[]) => {
-				acceptedFiles.forEach(async (dropFile: any) => {
-					const fileSize = bytesToKB(dropFile.size);
-					const fileNameString = dropFile.name.split(".")[0];
-					const fileName = fileNameString;
-					setResumeFilename(dropFile.name);
-
-					if (parseInt(fileSize) > 40000) {
-						alert(
-							`File size exceeds the maximum allowed size of 400KB. file size uploaded is ${fileSize} KB`
-						);
-					} else if (dropFile) {
-						console.log(dropFile);
-						const reader = new FileReader();
-						reader.onabort = () => console.log("file reading was aborted");
-						reader.onerror = () => console.log("file reading has failed");
-						reader.onload = async (event: any) => {
-							const fileData = event.target.result;
-							setShowCV(fileData);
-							setDisplayCV(true);
-							const fileType = getFileTypeFromBase64(fileData);
-							const base64Split =
-								typeof fileData === "string" && fileData.split(",")[1];
-							const binaryString = base64Split ? atob(base64Split) : "";
-							const uIntDataArray = new Uint8Array(binaryString.length);
-							for (let i = 0; i < binaryString.length; i++) {
-								uIntDataArray[i] = binaryString.charCodeAt(i);
-							}
-
-							const fileDataArray = Array.from(uIntDataArray);
-							const fileObject = {
-								fileName,
-								fileType,
-								fileDataArray,
-								imageUrl: "",
-							};
-
-							handleFieldUpdate("fileCV", fileObject);
-						};
-						reader.readAsDataURL(dropFile);
-					} else {
-						const fileNameString = dropFile?.name?.split(".")[0];
+			onDrop: useCallback(
+				async (acceptedFiles: any[]) => {
+					acceptedFiles.forEach(async (dropFile: any) => {
+						const fileSize = bytesToKB(dropFile.size);
+						const fileNameString = dropFile.name.split(".")[0];
 						const fileName = fileNameString;
-						const reader = new FileReader();
-						reader.onabort = () => console.log("file reading was aborted");
-						reader.onerror = () => console.log("file reading has failed");
-						reader.onload = async (event: any) => {
-							const fileData = event.target.result;
+						setResumeFilename(dropFile.name);
 
-							const fileType = getFileTypeFromBase64(fileData);
-							const base64Split =
-								typeof fileData === "string" && fileData.split(",")[1];
-							const binaryString = base64Split ? atob(base64Split) : "";
-							const uIntDataArray = new Uint8Array(binaryString.length);
-							for (let i = 0; i < binaryString.length; i++) {
-								uIntDataArray[i] = binaryString.charCodeAt(i);
-							}
+						if (parseInt(fileSize) > 40000) {
+							alert(
+								`File size exceeds the maximum allowed size of 400KB. file size uploaded is ${fileSize} KB`
+							);
+						} else if (dropFile) {
+							console.log(dropFile);
+							const reader = new FileReader();
+							reader.onabort = () => console.log("file reading was aborted");
+							reader.onerror = () => console.log("file reading has failed");
+							reader.onload = async (event: any) => {
+								const fileData = event.target.result;
+								setShowCV(fileData);
+								setDisplayCV(true);
+								const fileType = getFileTypeFromBase64(fileData);
+								const base64Split =
+									typeof fileData === "string" && fileData.split(",")[1];
+								const binaryString = base64Split ? atob(base64Split) : "";
+								const uIntDataArray = new Uint8Array(binaryString.length);
+								for (let i = 0; i < binaryString.length; i++) {
+									uIntDataArray[i] = binaryString.charCodeAt(i);
+								}
 
-							const fileDataArray = Array.from(uIntDataArray);
+								const fileDataArray = Array.from(uIntDataArray);
+								const fileObject = {
+									fileName,
+									fileType,
+									fileDataArray,
+									imageUrl: "",
+								};
 
-							console.log(fileDataArray);
-
-							const fileObject = {
-								fileName,
-								fileType,
-								fileDataArray,
-								imageUrl: "",
+								handleFieldUpdate("fileCV", fileObject);
 							};
+							reader.readAsDataURL(dropFile);
+						} else {
+							const fileNameString = dropFile?.name?.split(".")[0];
+							const fileName = fileNameString;
+							const reader = new FileReader();
+							reader.onabort = () => console.log("file reading was aborted");
+							reader.onerror = () => console.log("file reading has failed");
+							reader.onload = async (event: any) => {
+								const fileData = event.target.result;
 
-							handleFieldUpdate("fileCV", fileObject);
-						};
-						reader.readAsDataURL(dropFile);
-					}
-				});
-			}, []),
+								const fileType = getFileTypeFromBase64(fileData);
+								const base64Split =
+									typeof fileData === "string" && fileData.split(",")[1];
+								const binaryString = base64Split ? atob(base64Split) : "";
+								const uIntDataArray = new Uint8Array(binaryString.length);
+								for (let i = 0; i < binaryString.length; i++) {
+									uIntDataArray[i] = binaryString.charCodeAt(i);
+								}
+
+								const fileDataArray = Array.from(uIntDataArray);
+
+								console.log(fileDataArray);
+
+								const fileObject = {
+									fileName,
+									fileType,
+									fileDataArray,
+									imageUrl: "",
+								};
+
+								handleFieldUpdate("fileCV", fileObject);
+							};
+							reader.readAsDataURL(dropFile);
+						}
+					});
+				},
+				[handleFieldUpdate]
+			),
 		},
 		{
 			dropClass:
@@ -256,48 +262,53 @@ function FillResumeData({
 			uploadedImage: showUpload,
 			dropzonePlaceholder:
 				imageFilename === "" ? "Upload image" : imageFilename,
-			onDrop: useCallback(async (acceptedFiles: any[]) => {
-				acceptedFiles.forEach(async (dropFile: Blob) => {
-					const fileSize = bytesToKB(dropFile.size);
-					setImageFilename(dropFile.name);
+			onDrop: useCallback(
+				async (acceptedFiles: any[]) => {
+					acceptedFiles.forEach(async (dropFile: Blob) => {
+						const fileSize = bytesToKB(dropFile.size);
+						setImageFilename(dropFile.name);
+						console.log("image-file", dropFile);
+						if (parseInt(fileSize) > 400) {
+							alert(
+								`File size exceeds the maximum allowed size of 400KB. file size uploaded is ${fileSize} KB`
+							);
+						} else {
+							const fileNameString = dropFile.name.split(".")[0];
+							const fileName = fileNameString;
+							const reader = new FileReader();
+							reader.onabort = () => console.log("file reading was aborted");
+							reader.onerror = () => console.log("file reading has failed");
+							reader.onload = async (event: any) => {
+								const fileData = event.target.result;
+								setShowUpload(fileData);
+								const fileType = getFileTypeFromBase64(fileData);
+								const base64Split =
+									typeof fileData === "string" && fileData.split(",")[1];
+								const binaryString = base64Split ? atob(base64Split) : "";
+								const uIntDataArray = new Uint8Array(binaryString.length);
+								for (let i = 0; i < binaryString.length; i++) {
+									uIntDataArray[i] = binaryString.charCodeAt(i);
+								}
 
-					if (parseInt(fileSize) > 400) {
-						alert(
-							`File size exceeds the maximum allowed size of 400KB. file size uploaded is ${fileSize} KB`
-						);
-					} else {
-						const fileNameString = dropFile.name.split(".")[0];
-						const fileName = fileNameString;
-						const reader = new FileReader();
-						reader.onabort = () => console.log("file reading was aborted");
-						reader.onerror = () => console.log("file reading has failed");
-						reader.onload = async (event: any) => {
-							const fileData = event.target.result;
-							setShowUpload(fileData);
-							const fileType = getFileTypeFromBase64(fileData);
-							const base64Split =
-								typeof fileData === "string" && fileData.split(",")[1];
-							const binaryString = base64Split ? atob(base64Split) : "";
-							const uIntDataArray = new Uint8Array(binaryString.length);
-							for (let i = 0; i < binaryString.length; i++) {
-								uIntDataArray[i] = binaryString.charCodeAt(i);
-							}
+								const fileDataArray = Array.from(uIntDataArray);
 
-							const fileDataArray = Array.from(uIntDataArray);
+								const urlImage = window.URL.createObjectURL(dropFile);
 
-							const fileObject = {
-								fileName,
-								fileType,
-								fileDataArray,
-								imageUrl: "",
+								const fileObject = {
+									fileName,
+									fileType,
+									fileDataArray,
+									imageUrl: urlImage,
+								};
+
+								handleFieldUpdate("fileData", fileObject);
 							};
-
-							handleFieldUpdate("fileData", fileObject);
-						};
-						reader.readAsDataURL(dropFile);
-					}
-				});
-			}, []),
+							reader.readAsDataURL(dropFile);
+						}
+					});
+				},
+				[handleFieldUpdate]
+			),
 		},
 		{
 			placeholder: "Enter your fullname",
@@ -439,6 +450,7 @@ function FillResumeData({
 				);
 
 				alert("form Submitted successfully");
+
 				if (submitForm) submitForm(formState);
 				!onFormSubmitted
 					? router.push(`/template/${templateId}`)

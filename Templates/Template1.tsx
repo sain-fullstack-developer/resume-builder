@@ -7,7 +7,7 @@ import Heading from "@/elements/Heading";
 import ContactBlock from "@/components/ContactBlock";
 import Experience from "@/components/Experience";
 import Activities from "@/components/Activities";
-import { staticImagesPath } from "@/utils/utilFunctions";
+
 import Skills from "@/components/Skills";
 import { fetchFormApiData } from "@/store/Store";
 
@@ -40,8 +40,8 @@ function Template1({ resumeRef, fillModeData, fillImage }: TemplatesProps) {
 
 	return (
 		<>
-			<div ref={resumeRef} className="bg-green-400">
-				<div className="grid relative place-items-center z-0 w-full">
+			<div ref={resumeRef} className="">
+				<div className="grid relative place-items-center z-0 w-full bg-primary p-16">
 					<div className="w-full h-40 grid place-items-center">
 						<img
 							src="avatar.png"
@@ -49,8 +49,8 @@ function Template1({ resumeRef, fillModeData, fillImage }: TemplatesProps) {
 							className="h-40 w-40 rounded-full z-1 -mb-20"
 						/>
 					</div>
-					<div className="text-black uppercase grid place-items-center z-10 mt-8">
-						<h1 className="text-7xl font-light tracking-widest">
+					<div className="text-white uppercase grid place-items-center z-10">
+						<h1 className="text-6xl font-light tracking-widest">
 							{fillModeData ? fillModeData?.fullName : apiData?.fullName}
 						</h1>
 						<p className="tracking-widest mt-4">
@@ -59,7 +59,7 @@ function Template1({ resumeRef, fillModeData, fillImage }: TemplatesProps) {
 					</div>
 				</div>
 
-				<div className="grid grid-cols-2 gap-x-16 bg-white mx-20 my-10">
+				<div className="grid grid-cols-2 gap-x-16 px-16 py-8 bg-white">
 					<div>
 						<Objective
 							level={2}

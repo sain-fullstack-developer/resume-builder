@@ -1,9 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
 	content: [
-		"./pages/**/*.{js,ts,jsx,tsx,mdx}",
-		"./components/**/*.{js,ts,jsx,tsx,mdx}",
 		"./app/**/*.{js,ts,jsx,tsx,mdx}",
+		"./components/**/*.{js,ts,jsx,tsx,mdx}",
 	],
 	theme: {
 		extend: {
@@ -24,7 +23,7 @@ module.exports = {
 				primary: "var(--transperant-primary)",
 				secondary: "var(--transperant-secondary)",
 				primaryTemp: "var(--temp0-text-primary)",
-				secondaryTemp: "",
+				secondaryTemp: "var(--temp0-primary)",
 			},
 			fontSize: {
 				h1: "4rem",

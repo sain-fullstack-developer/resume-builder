@@ -31,7 +31,11 @@ function Projects({ data, color, level, headClass, underline }: ProjectsProps) {
 						<DetailsColumn
 							sideHeading="Project Link"
 							content={
-								<a href={project.projectUrl} target="_blank" rel="noreferrer">
+								<a
+									className="text-blue-400 underline"
+									href={project.projectUrl}
+									target="_blank"
+									rel="noreferrer">
 									{project.projectUrl}
 								</a>
 							}
