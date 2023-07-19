@@ -38,12 +38,10 @@ export default function MyDropzone({
 						? `${iconClass} absolute`
 						: "absolute right-2 top-4 cursor-pointer"
 				}>
-				<img
-					src={
-						docFiles
-							? staticImagesPath("file-upload.png")
-							: staticImagesPath("upload.png")
-					}
+				<Image
+					width={32}
+					height={32}
+					src={docFiles ? "/file-upload.png" : "/upload.png"}
 					alt="upload-files"
 					className="w-8 h-8"
 				/>
@@ -61,7 +59,9 @@ export default function MyDropzone({
 			</p>
 			{uploadedImage ? (
 				<>
-					<img
+					<Image
+						width={100}
+						height={100}
 						className="h-full w-full rounded-full absolute z-0"
 						src={uploadedImage}
 						alt="new"

@@ -96,7 +96,9 @@ function ContactPage() {
 							Name:
 						</label>
 						<InputField
-							inputClass="bg-transperentBlack text-xl text-white border-none p-5 rounded-full outline-none mt-2.5 max-w-xl"
+							inputClass={`${
+								onDarkMode ? "bg-white text-black" : "text-white"
+							} bg-transperentBlack text-xl  border-none p-5 rounded-full outline-none mt-2.5 max-w-xl`}
 							type="text"
 							placeholder="Enter your name"
 							id="name"
@@ -116,7 +118,9 @@ function ContactPage() {
 							Email:
 						</label>
 						<InputField
-							inputClass="bg-transperentBlack text-xl text-white border-none p-5 rounded-full outline-none mt-2.5 max-w-xl"
+							inputClass={`${
+								onDarkMode ? "bg-white text-black" : "text-white"
+							} bg-transperentBlack text-xl border-none p-5 rounded-full outline-none mt-2.5 max-w-xl`}
 							type="email"
 							placeholder="Enter your email"
 							id="email"
@@ -136,7 +140,9 @@ function ContactPage() {
 							Message:
 						</label>
 						<textarea
-							className="bg-transperentBlack text-xl text-white border-none p-5 rounded-lg outline-none mt-2.5 max-w-xl"
+							className={`${
+								onDarkMode ? "bg-white text-black" : "text-white"
+							} bg-transperentBlack text-xl border-none p-5 rounded-lg outline-none mt-2.5 max-w-xl`}
 							id="message"
 							name="message"
 							rows={6}

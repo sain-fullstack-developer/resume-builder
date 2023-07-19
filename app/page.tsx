@@ -1,5 +1,5 @@
 "use client";
-import CourseCard from "@/components/CourseCard";
+// import CourseCard from "@/components/CourseCard";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import ToggleMode from "@/components/ToggleMode";
@@ -12,23 +12,23 @@ import JobCard from "@/components/JobCard";
 export default function Home() {
 	const [onDarkMode, setOnDarkMode] = useState(false);
 	const [data, setData] = useState<any[] | undefined>([]);
-	const [courseData, setCourseData] = useState<any>();
+	// const [courseData, setCourseData] = useState<any>();
 
 	const handleDarkToggle = () => {
 		setOnDarkMode(!onDarkMode);
 	};
 
-	// useEffect(() => {
-	// 	async function jobDataFetch() {
-	// 		const response = await axios.get(
-	// 			"http://api.adzuna.com/v1/api/jobs/in/search/1?app_id=50de75e6&app_key=a862edf0013e2afca771317622b66cda&results_per_page=20&what=javascript%20developer&content-type=application/json"
-	// 		);
-	// 		console.log("response", response.data);
-	// 		return setData(response.data.results.slice(0, 8));
-	// 	}
+	useEffect(() => {
+		async function jobDataFetch() {
+			const response = await axios.get(
+				"http://api.adzuna.com/v1/api/jobs/in/search/1?app_id=50de75e6&app_key=a862edf0013e2afca771317622b66cda&results_per_page=20&what=javascript%20developer&content-type=application/json"
+			);
+			console.log("response", response.data);
+			return setData(response.data.results.slice(0, 8));
+		}
 
-	// 	jobDataFetch();
-	// }, []);
+		jobDataFetch();
+	}, []);
 
 	return (
 		<main className="min-h-screen">
@@ -70,7 +70,12 @@ export default function Home() {
 								</Link>
 							</div>
 							<div className="hidden lg:mt-0 lg:col-span-5 lg:flex">
-								<img src="/character.png" alt="mockup" />
+								<Image
+									width={500}
+									height={100}
+									src="/character.png"
+									alt="mockup"
+								/>
 							</div>
 						</div>
 					</section>
@@ -88,21 +93,23 @@ export default function Home() {
 									resume with your own information and download it.
 								</p>
 							</div>
-							<div className="md:grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+							<div className="md:grid md:grid-cols-2 lg:grid-cols-3 sm:gap-4">
 								{data &&
 									data !== undefined &&
+									data.length > 0 &&
 									data.map((list: any, index: any) => {
 										return (
 											<JobCard
 												key={index}
 												imageAlt="jobposting"
-												imageSrc={"ad-1.jpg"}
+												imageSrc="/ad-1.jpg"
 												title={list.title}
 												text={list.description}
 												companyName={list.company.display_name}
 												location={list.location.display_name}
 												postedOn={list.created}
 												category={list.category.label}
+												redirect_url={list.redirect_url}
 											/>
 										);
 									}, [])}
@@ -135,12 +142,16 @@ export default function Home() {
 								</p>
 							</div>
 							<div className="grid grid-cols-2 gap-4 mt-8">
-								<img
+								<Image
+									width={100}
+									height={100}
 									className="w-full rounded-lg"
 									src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/office-long-2.png"
 									alt="office content 1"
 								/>
-								<img
+								<Image
+									width={100}
+									height={100}
 									className="mt-4 w-full rounded-lg lg:mt-10"
 									src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/office-long-1.png"
 									alt="office content 2"

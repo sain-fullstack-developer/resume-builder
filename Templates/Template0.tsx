@@ -9,6 +9,7 @@ import Skills from "@/components/Skills";
 import Heading from "@/elements/Heading";
 import { fetchFormApiData } from "@/store/Store";
 import { apiDataTypes } from "@/utils/typeInterfaces";
+import Image from "next/image";
 import React, { MutableRefObject, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -60,7 +61,7 @@ const TemplateDefault: React.FC<TemplatesProps> = ({
 			<div className="relative">
 				<div id="container" ref={resumeRef} className="flex rounded-r-3xl">
 					<div className="px-5 bg-primary grid grid-rows-4 gap-2 text-white justify-center">
-						<img
+						<Image
 							width={400}
 							height={400}
 							className="w-64 h-64 m-auto rounded-full text-white"
