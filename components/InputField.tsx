@@ -61,7 +61,7 @@ function InputField(props: inputFieldProps) {
 		<>
 			{dropZone ? (
 				<MyDropzone
-					placeholder={dropzonePlaceholder}
+					placeholder={dropzonePlaceholder ? dropzonePlaceholder : ""}
 					dropClass={dropClass}
 					iconClass={iconClass}
 					onDrop={onDrop}

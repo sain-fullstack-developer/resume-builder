@@ -4,15 +4,16 @@ import ToggleMode from "../../components/ToggleMode";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import Link from "next/link";
+import Image from "next/image";
 
 const SelectTemplate = () => {
 	const [onDarkMode, setOnDarkMode] = React.useState(false);
 	const templatesList = [
-		"resume-1.png",
-		"resume-2.png",
-		"resume-3.png",
-		"resume-4.png",
-		"resume-5.png",
+		"/resume-1.png",
+		"/resume-2.png",
+		"/resume-3.png",
+		"/resume-4.png",
+		"/resume-5.png",
 	];
 
 	const handleDarkToggle = () => {
@@ -40,7 +41,9 @@ const SelectTemplate = () => {
 									? `/form/${index}`
 									: `/page-not-found`
 							}>
-							<img
+							<Image
+								width={400}
+								height={400}
 								className="w-full h-full hover:scale-105 transition-all rounded-xl shadow-2xl"
 								src={list}
 								alt={`template-${index}`}

@@ -11,6 +11,7 @@ import Heading from "@/elements/Heading";
 import ContactBlock from "@/components/ContactBlock";
 import Skills from "@/components/Skills";
 import { fetchFormApiData } from "@/store/Store";
+import Image from "next/image";
 
 function Template2({ resumeRef, fillModeData }: TemplatesProps) {
 	const dispatch = useDispatch();
@@ -63,7 +64,10 @@ function Template2({ resumeRef, fillModeData }: TemplatesProps) {
 				className="bg-primary min-h-screen relative pb-16 px-16">
 				<section className="flex justify-center px-8 py-8">
 					<div className="w-48 h-48 bg-gray-400 rounded-b-[6rem] grid place-items-center">
-						<img
+						<Image
+							width={176}
+							height={176}
+							layout="fixed"
 							src={imageUrl ? imageUrl : "/avatar.png"}
 							alt="profile-pic"
 							className="h-44 w-44 rounded-full mt-14"
@@ -89,7 +93,12 @@ function Template2({ resumeRef, fillModeData }: TemplatesProps) {
 						/>
 					</div>
 					<div className="grid place-items-center">
-						<img src="/mortarboard.png" alt="Qualification-Icon" />
+						<Image
+							width={32}
+							height={32}
+							src="/mortarboard.png"
+							alt="Qualification-Icon"
+						/>
 						<div></div>
 					</div>
 					<div className="r5-second-block-col-3">
@@ -112,7 +121,13 @@ function Template2({ resumeRef, fillModeData }: TemplatesProps) {
 						/>
 					</div>
 					<div className="r5-second-block-col-2 col-span-1">
-						<img src="mortarboard.png" alt="Qualification-Icon" />
+						<Image
+							width={32}
+							height={32}
+							layout="fixed"
+							src="mortarboard.png"
+							alt="Qualification-Icon"
+						/>
 						<div className="h-80 w-0.5 bg-white mt-5"></div>
 					</div>
 					<div className="r5-second-block-col-3 col-span-6">
@@ -131,7 +146,13 @@ function Template2({ resumeRef, fillModeData }: TemplatesProps) {
 						<ContactBlock color data={fillModeData ? fillModeData : apiData} />
 					</div>
 					<div className="grid place-items-center">
-						<img src="settings.png" alt="Settings-Icon" />
+						<Image
+							width={100}
+							height={100}
+							layout="fixed"
+							src="settings.png"
+							alt="Settings-Icon"
+						/>
 						<div></div>
 					</div>
 					<div className="r5-forth-block-col-3">

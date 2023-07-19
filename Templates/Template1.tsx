@@ -10,6 +10,7 @@ import Activities from "@/components/Activities";
 
 import Skills from "@/components/Skills";
 import { fetchFormApiData } from "@/store/Store";
+import Image from "next/image";
 
 function Template1({ resumeRef, fillModeData, fillImage }: TemplatesProps) {
 	const dispatch = useDispatch();
@@ -43,8 +44,11 @@ function Template1({ resumeRef, fillModeData, fillImage }: TemplatesProps) {
 			<div ref={resumeRef} className="">
 				<div className="grid relative place-items-center z-0 w-full bg-primary p-16">
 					<div className="w-full h-40 grid place-items-center">
-						<img
-							src="avatar.png"
+						<Image
+							width={160}
+							height={160}
+							layout="fixed"
+							src="/avatar.png"
 							alt="profile-pic"
 							className="h-40 w-40 rounded-full z-1 -mb-20"
 						/>
