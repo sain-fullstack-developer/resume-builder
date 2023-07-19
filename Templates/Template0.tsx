@@ -39,8 +39,6 @@ const TemplateDefault: React.FC<TemplatesProps> = ({
 
 	const imageUrl = fillModeData ? fillImage : reduxData?.fileData?.imageUrl;
 
-	console.log(imageUrl);
-
 	const result = fillModeData ? fillModeData : reduxData;
 
 	useEffect(() => {
@@ -64,7 +62,7 @@ const TemplateDefault: React.FC<TemplatesProps> = ({
 						<Image
 							width={400}
 							height={400}
-							className="w-64 h-64 m-auto rounded-full text-white"
+							className="w-64 h-64 mt-8 rounded-full text-white"
 							src={imageUrl ? imageUrl : "/avatar.png"}
 							alt="professional profile"
 						/>
