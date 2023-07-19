@@ -18,11 +18,11 @@ export default function Home() {
 		setOnDarkMode(!onDarkMode);
 	};
 
+	const apiUrl: string | undefined = process.env.NEXT_PUBLIC_JOB_API;
+
 	useEffect(() => {
 		async function jobDataFetch() {
-			const response = await axios.get(
-				"http://api.adzuna.com/v1/api/jobs/in/search/1?app_id=50de75e6&app_key=a862edf0013e2afca771317622b66cda&results_per_page=20&what=javascript%20developer&content-type=application/json"
-			);
+			const response = await axios.get(apiUrl ? apiUrl : "");
 			console.log("response", response.data);
 			return setData(response.data.results.slice(0, 8));
 		}
@@ -63,9 +63,9 @@ export default function Home() {
 										viewBox="0 0 20 20"
 										xmlns="http://www.w3.org/2000/svg">
 										<path
-											fill-rule="evenodd"
+											fillRule="evenodd"
 											d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-											clip-rule="evenodd"></path>
+											clipRule="evenodd"></path>
 									</svg>
 								</Link>
 							</div>
